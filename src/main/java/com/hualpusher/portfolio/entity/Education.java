@@ -11,8 +11,10 @@ public class Education {
     private String institution;
     private String degree;
     @Temporal(TemporalType.DATE)
-    private Date from;
+    @Column(name = "start_date")
+    private Date startDate;
     @Temporal(TemporalType.DATE)
-    private Date to;
+    @Column(name = "end_date")
+    private Date endDate;
     private String description;
 }
