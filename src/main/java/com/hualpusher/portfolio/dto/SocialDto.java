@@ -8,4 +8,6 @@ public class SocialDto {
     private String name;
     private String url;
     private String icon;
+    private Long userId;
 }
+

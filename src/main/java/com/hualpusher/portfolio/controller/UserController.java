@@ -78,7 +78,7 @@ public class UserController {
 
     //*************CONTROLADORES PARA LOS DISTINTOS DTO DERIVADOS DE USER*************//
 
-    @PutMapping("/update/fulluser/{id}")
+    @PatchMapping("/update/fulluser/{id}")
     public ResponseEntity<UserDto> updateFullUser(@PathVariable Long id, @RequestBody UserDto userDto) {
         return userService.findById(id)
                 .map(user -> {
@@ -91,7 +91,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/update/personheader/{id}")
+    @PatchMapping("/update/personheader/{id}")
     public ResponseEntity<PersonHeaderDto> updatePersonHeader(@PathVariable Long id, @RequestBody PersonHeaderDto personHeaderDto) {
         return personHeaderService.findById(id)
                 .map(user -> {
@@ -104,7 +104,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/update/aboutme/{id}")
+    @PatchMapping("/update/aboutme/{id}")
     public ResponseEntity<UserAboutMeDto> updateAboutMe(@PathVariable Long id, @RequestBody UserAboutMeDto userAboutMeDto) {
         return userAboutMeService.findById(id)
                 .map(user -> {
@@ -117,7 +117,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/update/contact/{id}")
+    @PatchMapping("/update/contact/{id}")
     public ResponseEntity<UserContactDto> updateContact(@PathVariable Long id, @RequestBody UserContactDto userContactDto) {
         return userContactService.findById(id)
                 .map(user -> {
@@ -130,7 +130,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/update/fullname/{id}")
+    @PatchMapping("/update/fullname/{id}")
     public ResponseEntity<UserFullNameDto> updateFullName(@PathVariable Long id, @RequestBody UserFullNameDto userFullNameDto) {
         return userFullNameService.findById(id)
                 .map(user -> {
@@ -143,100 +143,5 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-   /* @PostMapping("/create/fulluser")
-    public ResponseEntity<UserDto> createFullUser(@RequestBody UserDto userDto) {
-        User user = userService.convertToEntity(userDto);
-        User createdUser = userService.save(user);
-        return ResponseEntity.ok(userService.convertToDto(createdUser));
-    }
-    @GetMapping("users/{id}")
-    public ResponseEntity<UserDto> getFullUserById(@PathVariable Long id) {
-        return userService.findById(id)
-                .map(userService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
 
-    @GetMapping("/allusers")
-    public ResponseEntity<List<UserDto>> getAllFullUsers() {
-        List<UserDto> userDtos = userService.findAll().stream()
-                .map(userService::convertToDto)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(userDtos);
-    }
-    @PostMapping("/create/personheader")
-    public ResponseEntity<PersonHeaderDto> createUser(@RequestBody PersonHeaderDto personHeaderDto) {
-        User user = personHeaderService.convertToEntity(personHeaderDto);
-        User createdUser = personHeaderService.save(user);
-        return ResponseEntity.ok(personHeaderService.convertToDto(createdUser));
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<PersonHeaderDto> getUser(@PathVariable Long id) {
-        return personHeaderService.findById(id)
-                .map(personHeaderService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping
-    public ResponseEntity<List<PersonHeaderDto>> getAllUsers() {
-        List<PersonHeaderDto> personHeaderDtos = personHeaderService.findAll().stream()
-                .map(personHeaderService::convertToDto)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(personHeaderDtos);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<PersonHeaderDto> updateUser(@PathVariable Long id, @RequestBody PersonHeaderDto personHeaderDto) {
-        return personHeaderService.findById(id)
-                .map(user -> {
-                    user.setName(personHeaderDto.getName());
-                    user.setLastname(personHeaderDto.getLastname());
-                    user.setAlias(personHeaderDto.getAlias());
-                    user.setProfession(personHeaderDto.getProfession());
-                    return personHeaderService.save(user);
-                })
-                .map(personHeaderService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        personHeaderService.deleteById(id);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/{id}/aboutme")
-    public ResponseEntity<UserAboutMeDto> getUserAboutMe(@PathVariable Long id) {
-        return userAboutMeService.findById(id)
-                .map(userAboutMeService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/{id}/contact")
-    public ResponseEntity<UserContactDto> getUserContact(@PathVariable Long id) {
-        return userContactService.findById(id)
-                .map(userContactService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/{id}/fullname")
-    public ResponseEntity<UserFullNameDto> getUserFullName(@PathVariable Long id) {
-        return userFullNameService.findById(id)
-                .map(userFullNameService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/{id}/full")
-    public ResponseEntity<UserDto> getFullUser(@PathVariable Long id) {
-        return userService.findById(id)
-                .map(userService::convertToDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }*/
 }

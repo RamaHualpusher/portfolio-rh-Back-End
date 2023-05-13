@@ -19,4 +19,7 @@ public class Experience {
     @Column(name = "end_date")
     private Date endDate;
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

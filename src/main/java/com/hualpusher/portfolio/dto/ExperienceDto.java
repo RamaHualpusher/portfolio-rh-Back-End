@@ -12,4 +12,6 @@ public class ExperienceDto {
     private Date from;
     private Date to;
     private String description;
+    private Long userId;
 }
+

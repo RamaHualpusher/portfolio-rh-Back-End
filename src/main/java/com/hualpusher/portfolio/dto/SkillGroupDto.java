@@ -8,5 +8,7 @@ import java.util.List;
 public class SkillGroupDto {
     private Long id;
     private String type;
+    private Long userId;
     private List<SkillDto> items;
 }
+

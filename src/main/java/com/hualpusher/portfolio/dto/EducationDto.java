@@ -12,4 +12,5 @@ public class EducationDto {
     private Date from;
     private Date to;
     private String description;
+    private Long userId;
 }

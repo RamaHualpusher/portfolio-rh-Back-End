@@ -11,4 +11,7 @@ public class Social {
     private String name;
     private String url;
     private String icon;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

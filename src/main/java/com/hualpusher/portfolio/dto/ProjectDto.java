@@ -9,4 +9,5 @@ public class ProjectDto {
     private String description;
     private String url;
     private String image;
+    private Long userId;
 }

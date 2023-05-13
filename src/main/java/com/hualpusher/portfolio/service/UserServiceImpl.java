@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,56 +56,61 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> {
 
         user.setSkills(userDto.getSkills().stream()
                 .map(skillGroupDto -> {
-                    SkillGroup skillGroup = convertSkillGroupToEntity(skillGroupDto);
+                    SkillGroup skillGroup = skillGroupDto.getId() != null ? skillGroupRepository.findById(skillGroupDto.getId()).orElse(new SkillGroup()) : new SkillGroup();
+                    skillGroup = modelMapper.map(skillGroupDto, SkillGroup.class);
                     skillGroup.setItems(skillGroupDto.getItems().stream()
                             .map(skillDto -> {
-                                Skill skill = convertSkillToEntity(skillDto);
-                                skill = skillRepository.save(skill);
+                                Skill skill = skillDto.getId() != null ? skillRepository.findById(skillDto.getId()).orElse(new Skill()) : new Skill();
+                                skill = modelMapper.map(skillDto, Skill.class);
                                 return skill;
                             })
                             .collect(Collectors.toList())
                     );
-                    return skillGroupRepository.save(skillGroup);
+                    return skillGroup;
                 })
                 .collect(Collectors.toList())
         );
         user.setExperience(userDto.getExperience().stream()
                 .map(experienceDto -> {
-                    Experience experience = convertExperienceToEntity(experienceDto);
-                    return experienceRepository.save(experience);
+                    Experience experience = experienceDto.getId() != null ? experienceRepository.findById(experienceDto.getId()).orElse(new Experience()) : new Experience();
+                    experience = modelMapper.map(experienceDto, Experience.class);
+                    return experience;
                 })
                 .collect(Collectors.toList())
         );
 
         user.setEducation(userDto.getEducation().stream()
                 .map(educationDto -> {
-                    Education education = convertEducationToEntity(educationDto);
-                    return educationRepository.save(education);
+                    Education education = educationDto.getId() != null ? educationRepository.findById(educationDto.getId()).orElse(new Education()) : new Education();
+                    education = modelMapper.map(educationDto, Education.class);
+                    return education;
                 })
                 .collect(Collectors.toList())
         );
 
         user.setProjects(userDto.getProjects().stream()
                 .map(projectDto -> {
-                    Project project = convertProjectToEntity(projectDto);
-                    return projectRepository.save(project);
+                    Project project = projectDto.getId() != null ? projectRepository.findById(projectDto.getId()).orElse(new Project()) : new Project();
+                    project = modelMapper.map(projectDto, Project.class);
+                    return project;
                 })
                 .collect(Collectors.toList())
         );
 
         user.setSocial(userDto.getSocial().stream()
                 .map(socialDto -> {
-                    Social social = convertSocialToEntity(socialDto);
-                    return socialRepository.save(social);
+                    Social social = socialDto.getId() != null ? socialRepository.findById(socialDto.getId()).orElse(new Social()) : new Social();
+                    social = modelMapper.map(socialDto, Social.class);
+                    return social;
                 })
                 .collect(Collectors.toList())
         );
 
-
-        // Haz lo mismo para Experience, Education, Projects, y Social aquí...
-
         return user;
     }
+
+
+
 
 
     private ExperienceDto convertExperienceToDto(Experience experience) {
@@ -151,4 +157,3 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> {
         return modelMapper.map(socialDto, Social.class);
     }
 }
-

@@ -10,4 +10,7 @@ public class Skill {
     private Long id;
     private String name;
     private int level;
+    @ManyToOne
+    @JoinColumn(name = "group_id", nullable = false)
+    private SkillGroup group;
 }
