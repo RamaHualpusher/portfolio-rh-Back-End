@@ -4,6 +4,8 @@ import com.hualpusher.portfolio.dto.*;
 import com.hualpusher.portfolio.entity.User;
 import com.hualpusher.portfolio.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/user")
 public class UserController {
 
+    @Value("${app.admin.username}")
+    private String adminUsername;
+
+    @Value("${app.admin.password}")
+    private String adminPassword;
     private final PersonHeaderServiceImpl personHeaderService;
     private final UserAboutMeServiceImpl userAboutMeService;
     private final UserContactServiceImpl userContactService;
@@ -38,6 +45,18 @@ public class UserController {
         User user = userService.convertToEntity(userDto);
         User createdUser = userService.save(user);
         return ResponseEntity.ok(userService.convertToDto(createdUser));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(@RequestBody Login login) {
+        boolean usernameMatches = adminUsername.equals(login.getUsername());
+        boolean passwordMatches = adminPassword.equals(login.getPassword());
+
+        if (!usernameMatches || !passwordMatches) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
