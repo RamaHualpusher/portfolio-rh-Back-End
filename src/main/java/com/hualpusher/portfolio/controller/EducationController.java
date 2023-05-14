@@ -50,8 +50,8 @@ public class EducationController {
                 .map(education -> {
                     education.setInstitution(educationDto.getInstitution());
                     education.setDegree(educationDto.getDegree());
-                    education.setStartDate(educationDto.getFrom());
-                    education.setEndDate(educationDto.getTo());
+                    education.setStartDate(educationDto.getStartDate());
+                    education.setEndDate(educationDto.getEndDate());
                     education.setDescription(educationDto.getDescription());
                     return educationService.save(education);
                 })

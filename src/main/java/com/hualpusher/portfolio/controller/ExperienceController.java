@@ -50,8 +50,8 @@ public class ExperienceController {
                 .map(experience -> {
                     experience.setCompany(experienceDto.getCompany());
                     experience.setPosition(experienceDto.getPosition());
-                    experience.setStartDate(experienceDto.getFrom());
-                    experience.setEndDate(experienceDto.getTo());
+                    experience.setStartDate(experienceDto.getStartDate());
+                    experience.setEndDate(experienceDto.getEndDate());
                     experience.setDescription(experienceDto.getDescription());
                     return experienceService.save(experience);
                 })
