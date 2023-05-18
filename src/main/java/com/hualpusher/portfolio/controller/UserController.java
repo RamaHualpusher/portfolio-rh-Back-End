@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app")
 public class UserController {
 
     @Value("${app.admin.username}")

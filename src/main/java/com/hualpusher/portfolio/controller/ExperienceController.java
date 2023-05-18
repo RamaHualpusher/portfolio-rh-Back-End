@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/experience")
+@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app")
 public class ExperienceController {
 
     private final ExperienceServiceImpl experienceService;

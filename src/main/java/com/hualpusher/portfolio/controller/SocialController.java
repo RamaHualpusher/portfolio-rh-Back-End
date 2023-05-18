@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/social")
+@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app")
 public class SocialController {
 
     private final SocialServiceImpl socialService;

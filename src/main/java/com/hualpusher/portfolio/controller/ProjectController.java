@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/project")
+@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app")
 public class ProjectController {
 
     private final ProjectServiceImpl projectService;

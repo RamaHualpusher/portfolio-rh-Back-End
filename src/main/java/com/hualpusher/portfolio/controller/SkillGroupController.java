@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/skillgroup")
+@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app")
 public class SkillGroupController {
 
     private final SkillGroupServiceImpl skillGroupService;

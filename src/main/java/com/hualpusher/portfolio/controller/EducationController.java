@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/education")
+@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app")
 public class EducationController {
 
     private final EducationServiceImpl educationService;

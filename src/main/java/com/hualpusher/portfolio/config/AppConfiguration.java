@@ -19,10 +19,7 @@ public class AppConfiguration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins("https://portfolio-ramiro-hualpa.web.app")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
-                        .allowCredentials(true);
+                registry.addMapping("/**");
             }
         };
     }
