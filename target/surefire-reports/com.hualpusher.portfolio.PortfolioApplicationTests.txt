@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.hualpusher.portfolio.PortfolioApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 143.994 s - in com.hualpusher.portfolio.PortfolioApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 144.93 s - in com.hualpusher.portfolio.PortfolioApplicationTests
