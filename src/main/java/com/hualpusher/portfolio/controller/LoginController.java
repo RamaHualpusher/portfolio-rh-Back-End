@@ -9,7 +9,7 @@ import com.hualpusher.portfolio.dto.Login;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins = "https://portfolio-ramiro-hualpa.web.app/login")
+@CrossOrigin(origins = "*")
 public class LoginController {
     @Value("${spring.security.user.name}")
     private String username;
